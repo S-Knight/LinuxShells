@@ -18,3 +18,4 @@ git config --system alias.st status
 git config --system alias.ci commit
 git config --system alias.co checkout
 git config --system alias.br branch
+git config --global color.ui true
