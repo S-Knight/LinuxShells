@@ -3,3 +3,6 @@
 操作系统是CentOs6.5
 目录：
 installGit.sh	#源码安装Git2.6.3
+installComposer.sh	#安装Composer
+install-svn		#源码安装SVN1.9.2
+installPHPEnv	#源码安装PHP运行环境
