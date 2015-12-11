@@ -34,11 +34,13 @@ if echo $web |grep "nginx" > /dev/null;then
     nginx_version=1.4.4
   fi
 else
-  read -p "Please select the apache version of 2.2.29/2.4.10, input 1 or 2 : " tmp
+  read -p "Please select the apache version of 2.2.29/2.4.10/2.4.17, input 1 or 2 or 3: " tmp
   if [ "$tmp" == "1" ];then
     httpd_version=2.2.29
   elif [ "$tmp" == "2" ];then
     httpd_version=2.4.10
+  elif [ "$tmp" == "3" ]; then
+	httpd_version=2.4.17
   fi
 fi
 
@@ -132,7 +134,7 @@ if [ "$ifredhat" != "" ];then
   \cp ./res/rhel-debuginfo.repo /etc/yum.repos.d/
   yum makecache
   yum -y remove mysql MySQL-python perl-DBD-MySQL dovecot exim qt-MySQL perl-DBD-MySQL dovecot qt-MySQL mysql-server mysql-connector-odbc php-mysql mysql-bench libdbi-dbd-mysql mysql-devel-5.0.77-3.el5 httpd php mod_auth_mysql mailman squirrelmail php-pdo php-common php-mbstring php-cli &> /dev/null
-  yum -y install gcc gcc-c++ gcc-g77 make libtool autoconf patch unzip automake fiex* libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl libmcrypt libmcrypt-devel libpng libpng-devel libjpeg-devel openssl openssl-devel curl curl-devel libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl autoconf automake libaio*
+  yum -y install gcc gcc-c++ gcc-g77 cmake make libtool autoconf patch unzip automake fiex* libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl libmcrypt libmcrypt-devel libpng libpng-devel libjpeg-devel openssl openssl-devel curl curl-devel libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl autoconf automake libaio*
   iptables -F
 elif [ "$ifcentos" != "" ];then
 	if grep 5.10 /etc/issus  ;then
