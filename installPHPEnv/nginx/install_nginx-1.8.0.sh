@@ -25,9 +25,9 @@ chmod -R 775 /alidata/www
 chown -R www:www /alidata/www
 cd ..
 #cp -fR ./nginx/config-nginx/* /alidata/server/nginx/conf/
-#sed -i 's/worker_processes  2/worker_processes  '"$CPU_NUM"'/' /alidata/server/nginx/conf/nginx.conf
+sed -i 's/worker_processes  2/worker_processes  '"$CPU_NUM"'/' /alidata/server/nginx/conf/nginx.conf
 chmod 755 /alidata/server/nginx/sbin/nginx
 #/alidata/server/nginx/sbin/nginx
-mv /alidata/server/nginx/conf/nginx /etc/init.d/
+cp ./nginx/config-nginx/nginx /etc/init.d/
 chmod +x /etc/init.d/nginx
 /etc/init.d/nginx start
