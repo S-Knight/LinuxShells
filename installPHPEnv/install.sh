@@ -1,18 +1,12 @@
 #!/bin/bash
 
 ####---- global variables ----begin####
-export nginx_version=1.4.4
-export httpd_version=2.2.29
-export mysql_version=5.1.73
-export php_version=5.3.29
+export nginx_version=1.8.0
+export httpd_version=2.4.17
+export mysql_version=5.6.28
+export php_version=5.6.16
 
-export phpwind_version=8.7
-export phpmyadmin_version=4.1.8
-export vsftpd_version=2.3.2
-export sphinx_version=0.9.9
-export install_ftp_version=0.0.0
 ####---- global variables ----end####
-
 
 web=nginx
 install_log=/alidata/website-info.log
@@ -29,9 +23,11 @@ fi
 
 tmp=1
 if echo $web |grep "nginx" > /dev/null;then
-  read -p "Please select the nginx version of 1.4.4, input 1: " tmp
+  read -p "Please select the nginx version of 1.4.4/1.8.0, input 1 or 2: " tmp
   if [ "$tmp" == "1" ];then
     nginx_version=1.4.4
+  elif [ "$tmp" == "2" ];then
+    nginx_version=1.8.0
   fi
 else
   read -p "Please select the apache version of 2.2.29/2.4.10/2.4.17, input 1 or 2 or 3: " tmp
@@ -45,23 +41,23 @@ else
 fi
 
 tmp=1
-read -p "Please select the php version of 5.3.29/5.4.23/5.5.7, input 1 or 2 or 3 : " tmp
+read -p "Please select the php version of 5.4.23/5.5.7/5.6.16, input 1 or 2 or 3 : " tmp
 if [ "$tmp" == "1" ];then
-  php_version=5.3.29
-elif [ "$tmp" == "2" ];then
   php_version=5.4.23
-elif [ "$tmp" == "3" ];then
+elif [ "$tmp" == "2" ];then
   php_version=5.5.7
+elif [ "$tmp" == "3" ];then
+  php_version=5.6.16
 fi
 
 tmp=1
-read -p "Please select the mysql version of 5.1.73/5.5.40/5.6.21, input 1 or 2 or 3 : " tmp
+read -p "Please select the mysql version of 5.1.73/5.5.40/5.6.28, input 1 or 2 or 3 : " tmp
 if [ "$tmp" == "1" ];then
   mysql_version=5.1.73
 elif [ "$tmp" == "2" ];then
   mysql_version=5.5.40
 elif [ "$tmp" == "3" ];then
-  mysql_version=5.6.21
+  mysql_version=5.6.28
 fi
 
 echo ""
@@ -143,7 +139,7 @@ elif [ "$ifcentos" != "" ];then
   sed -i 's/^exclude/#exclude/' /etc/yum.conf
   yum makecache
   yum -y remove mysql MySQL-python perl-DBD-MySQL dovecot exim qt-MySQL perl-DBD-MySQL dovecot qt-MySQL mysql-server mysql-connector-odbc php-mysql mysql-bench libdbi-dbd-mysql mysql-devel-5.0.77-3.el5 httpd php mod_auth_mysql mailman squirrelmail php-pdo php-common php-mbstring php-cli &> /dev/null
-  yum -y install gcc gcc-c++ gcc-g77 make libtool autoconf patch unzip automake libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl libmcrypt libmcrypt-devel libpng libpng-devel libjpeg-devel openssl openssl-devel curl curl-devel libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl autoconf automake libaio*
+  yum -y install gcc gcc-c++ gcc-g77 make cmake libtool autoconf patch unzip automake libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl libmcrypt libmcrypt-devel libpng libpng-devel libjpeg-devel openssl openssl-devel curl curl-devel libxml2 libxml2-devel ncurses ncurses-devel libtool-ltdl-devel libtool-ltdl autoconf automake libaio*
   iptables -F
 elif [ "$ifubuntu" != "" ];then
   apt-get -y update
@@ -199,16 +195,16 @@ else
 	echo "---------- ${php_dir} ok ----------" >> tmp.log
 fi
 
-./php/install_php_extension.sh
-echo "---------- php extension ok ----------" >> tmp.log
+#./php/install_php_extension.sh
+#echo "---------- php extension ok ----------" >> tmp.log
 
-./ftp/install_${vsftpd_dir}.sh
-install_ftp_version=$(vsftpd -v 0> vsftpd_version && cat vsftpd_version |awk -F: '{print $2}'|awk '{print $2}' && rm -f vsftpd_version)
-echo "---------- vsftpd-$install_ftp_version  ok ----------" >> tmp.log
+#./ftp/install_${vsftpd_dir}.sh
+#install_ftp_version=$(vsftpd -v 0> vsftpd_version && cat vsftpd_version |awk -F: '{print $2}'|awk '{print $2}' && rm -f vsftpd_version)
+#echo "---------- vsftpd-$install_ftp_version  ok ----------" >> tmp.log
 
-./res/install_soft.sh
-echo "---------- phpwind-$phpwind_version ok ----------" >> tmp.log
-echo "---------- phpmyadmin-$phpmyadmin_version ok ----------" >> tmp.log
+#./res/install_soft.sh
+#echo "---------- phpwind-$phpwind_version ok ----------" >> tmp.log
+#echo "---------- phpmyadmin-$phpmyadmin_version ok ----------" >> tmp.log
 echo "---------- web init ok ----------" >> tmp.log
 ####---- install software ----end####
 
