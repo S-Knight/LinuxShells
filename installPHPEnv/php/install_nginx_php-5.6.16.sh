@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -rf php-5.6.16
-tar zxvf php-5.6.16.tar.gz
+tar zxvf ./php/php-5.6.16.tar.gz
 cd php-5.6.16
 ./configure --prefix=/alidata/server/php \
 --enable-opcache \

@@ -1,12 +1,11 @@
 #!/bin/bash
 
-  tar -xzvf mysql-5.6.28.tar.gz
-  cp mysql-5.6.28/* /alidata/server/mysql
+  tar -xzvf ./mysql/mysql-5.6.28.tar.gz
 
 groupadd mysql
 useradd -g mysql -s /sbin/nologin mysql
-cd /alidata/server/mysql/
-cmake .
+cd mysql-5.6.28 
+cmake -DCMAKE_INSTALL_PREFIX=/alidata/server/mysql .
 make
 make install
 /alidata/server/mysql/scripts/mysql_install_db --datadir=/alidata/server/mysql/data/ --basedir=/alidata/server/mysql --user=mysql
