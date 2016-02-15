@@ -41,7 +41,7 @@ else
 fi
 
 tmp=1
-read -p "Please select the php version of 5.4.23/5.5.7/5.6.16, input 1 or 2 or 3 or 4: " tmp
+read -p "Please select the php version of 5.4.23/5.5.7/5.6.16/5.6.18, input 1 or 2 or 3 or 4: " tmp
 if [ "$tmp" == "1" ];then
   php_version=5.4.23
 elif [ "$tmp" == "2" ];then
