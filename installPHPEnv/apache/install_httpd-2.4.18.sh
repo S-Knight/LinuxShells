@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -rf httpd-2.4.18 apr-1.5.0 apr-util-1.5.3
-tar zxvf httpd-2.4.18.tar.gz
+tar zxvf ./apache/httpd-2.4.18.tar.gz
 
 if [ ! -f apr-1.5.0.tar.gz ];then
   wget http://oss.aliyuncs.com/aliyunecs/onekey/apache/apr-1.5.0.tar.gz
