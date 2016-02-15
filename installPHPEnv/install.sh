@@ -73,7 +73,12 @@ else
   echo "apache : $httpd_version"
 fi
 echo "php    : $php_version"
+if [ "$mysql_version" == "0" ];then
+echo "mysql  : not install"
+else
 echo "mysql  : $mysql_version"
+fi
+
 
 read -p "Enter the y or Y to continue:" isY
 if [ "${isY}" != "y" ] && [ "${isY}" != "Y" ];then
