@@ -53,15 +53,13 @@ elif [ "$tmp" == "4" ];then
 fi
 
 tmp=1
-read -p "Please select the mysql version of 5.1.73/5.5.40/5.6.28/Not Install, input 1 or 2 or 3 or 0 : " tmp
+read -p "Please select the mysql version of 5.1.73/5.5.40/5.6.28, input 1 or 2 or 3 : " tmp
 if [ "$tmp" == "1" ];then
   mysql_version=5.1.73
 elif [ "$tmp" == "2" ];then
   mysql_version=5.5.40
 elif [ "$tmp" == "3" ];then
   mysql_version=5.6.28
-elif [ "$tmp" == "0" ];then
-  mysql_version=0
 fi
 
 echo ""
