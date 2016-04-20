@@ -2,9 +2,9 @@
 
 ####---- global variables ----begin####
 export nginx_version=1.8.0
-export httpd_version=2.4.18
+export httpd_version=2.4.20
 export mysql_version=5.6.28
-export php_version=5.6.18
+export php_version=5.6.20
 
 ####---- global variables ----end####
 
@@ -30,18 +30,18 @@ if echo $web |grep "nginx" > /dev/null;then
     nginx_version=1.8.0
   fi
 else
-  read -p "Please select the apache version of 2.2.29/2.4.10/2.4.18, input 1 or 2 or 3: " tmp
+  read -p "Please select the apache version of 2.2.29/2.4.10/2.4.20, input 1 or 2 or 3: " tmp
   if [ "$tmp" == "1" ];then
     httpd_version=2.2.29
   elif [ "$tmp" == "2" ];then
     httpd_version=2.4.10
   elif [ "$tmp" == "3" ]; then
-	httpd_version=2.4.18
+	httpd_version=2.4.20
   fi
 fi
 
 tmp=1
-read -p "Please select the php version of 5.4.23/5.5.7/5.6.16/5.6.18, input 1 or 2 or 3 or 4: " tmp
+read -p "Please select the php version of 5.4.23/5.5.7/5.6.16/5.6.20, input 1 or 2 or 3 or 4: " tmp
 if [ "$tmp" == "1" ];then
   php_version=5.4.23
 elif [ "$tmp" == "2" ];then
@@ -49,7 +49,7 @@ elif [ "$tmp" == "2" ];then
 elif [ "$tmp" == "3" ];then
   php_version=5.6.16
 elif [ "$tmp" == "4" ];then
-  php_version=5.6.18
+  php_version=5.6.20
 fi
 
 tmp=1
