@@ -18,6 +18,7 @@ git config --system alias.st status
 git config --system alias.ci commit
 git config --system alias.co checkout
 git config --system alias.br branch
-git config --global color.ui true
-git config --global core.longpaths true
+git config --system color.ui true
+git config --system core.longpaths true
+git config --global push.default simple
 
