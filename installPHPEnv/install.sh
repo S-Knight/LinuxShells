@@ -3,7 +3,7 @@
 ####---- global variables ----begin####
 export nginx_version=1.8.0
 export httpd_version=2.4.20
-export mysql_version=5.6.28
+export mysql_version=5.6.30
 export php_version=5.6.20
 
 ####---- global variables ----end####
@@ -53,13 +53,13 @@ elif [ "$tmp" == "4" ];then
 fi
 
 tmp=1
-read -p "Please select the mysql version of 5.1.73/5.5.40/5.6.28, input 1 or 2 or 3 : " tmp
+read -p "Please select the mysql version of 5.1.73/5.5.40/5.6.30, input 1 or 2 or 3 : " tmp
 if [ "$tmp" == "1" ];then
   mysql_version=5.1.73
 elif [ "$tmp" == "2" ];then
   mysql_version=5.5.40
 elif [ "$tmp" == "3" ];then
-  mysql_version=5.6.28
+  mysql_version=5.6.30
 fi
 
 echo ""
