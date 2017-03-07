@@ -1,7 +1,7 @@
 #!/bin/bash
 #源码安装Git2.11.0
 yum -y remove git
-yum -y  install curl-devel expat-devel gettext-devel   openssl-devel zlib-devel bash-completion
+yum -y  install curl-devel expat-devel gettext-devel   openssl-devel zlib-devel bash-completion perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 if [ ! -f git-2.11.0.tar.xz];then
     wget https://www.kernel.org/pub/software/scm/git/git-2.11.0.tar.xz
 fi
