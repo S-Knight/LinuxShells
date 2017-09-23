@@ -13,7 +13,7 @@ make all
 make install
 
 cp contrib/completion/git-completion.bash /etc/bash_completion.d/
-. /etc/bash_completion
+. /etc/bash_completion.d/git-completion.bash 
 
 git config --system alias.st status
 git config --system alias.ci commit
